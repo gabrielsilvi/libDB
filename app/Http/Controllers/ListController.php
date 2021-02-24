@@ -43,11 +43,9 @@ class ListController extends Controller
         if($request->file('image')->isValid()){
             $namefile = $request->titulo .'.'. $request->image->extension();
             $request->file('image')->storeAs('capas', $namefile);
-            livros::insert($dataForm);
-        }else{
-            livros::insert($dataForm);   
+            $dataForm['image'] = $namefile;   
         }
-        
+        livros::insert($dataForm);
         return redirect()->route('list.index');
 
     }
