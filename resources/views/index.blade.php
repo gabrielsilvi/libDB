@@ -2,30 +2,30 @@
 
 @section('content')
     <h1>chegou</h1>
-    {{-- <section>
+    <section>
         <div class="content">
             <div class="carrosel-livros">
                 <div class="owl-carousel owl-theme">
                     <class class="item">
-                        <img class="box-livro" src="./img/book1.jpg" alt="">
+                        <img class="box-livro" src="{{url('assets/img/book1.jpg')}}" alt="">
                     </class>
                     <class class="item">
-                        <img class="box-livro" src="./img/book2.jpg" alt="">
+                        <img class="box-livro" src="{{url('assets/img/book2.jpg')}}" alt="">
                     </class>
                     <class class="item">
-                        <img class="box-livro" src="./img/book3.jpg" alt="">
+                        <img class="box-livro" src="{{url('assets/img/book3.jpg')}}" alt="">
                     </class>
                     <class class="item">
-                        <img class="box-livro" src="./img/book3.jpg" alt="">
+                        <img class="box-livro" src="{{url('assets/img/book3.jpg')}}" alt="">
                     </class>
                     <class class="item">
-                        <img class="box-livro" src="./img/book3.jpg" alt="">
+                        <img class="box-livro" src="{{url('assets/img/book3.jpg')}}" alt="">
                     </class>
                     <class class="item">
-                        <img class="box-livro" src="./img/book3.jpg" alt="">
+                        <img class="box-livro" src="{{url('assets/img/book3.jpg')}}" alt="">
                     </class>
                     <class class="item">
-                        <img class="box-livro" src="./img/book3.jpg" alt="">
+                        <img class="box-livro" src="{{url('assets/img/book3.jpg')}}" alt="">
                     </class>
                 </div>
             </div>
@@ -36,5 +36,5 @@
             <h1>Livros</h1>
             Proxima atualizacao...
         </div>
-    </article> --}}
+    </article>
 @endsection

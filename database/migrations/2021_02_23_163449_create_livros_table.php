@@ -17,8 +17,9 @@ class CreateLivrosTable extends Migration
             $table->increments('id');
             $table->string('titulo')->unique();
             $table->string('nome_autor')->unique();
-            $table->integer('genero_id')->unsigned();
-            $table->foreign('genero_id')->references('id')->on('generos')->onDelete('cascade');
+            $table->string('genero')->unique();
+            // $table->integer('genero_id')->unsigned()->nullable();
+            // $table->foreign('genero_id')->references('id')->on('generos')->onDelete('cascade')->nullable();
             $table->string('image',100)->nullable();
             $table->timestamps();
         });

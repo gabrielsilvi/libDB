@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\livros;
 
 class ListController extends Controller
 {
@@ -13,7 +14,7 @@ class ListController extends Controller
      */
     public function index()
     {
-            return view('list');
+        return view('list');
     }
 
     /**
@@ -23,7 +24,7 @@ class ListController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -34,7 +35,19 @@ class ListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataForm = $request->except('_token');
+
+        // dd($request->file('image'));
+        if($request->file('image')->isValid()){
+            $namefile = $request->titulo . '.' . $request->image->extension();
+            $request->file('image')->storeAs('capas', $namefile);
+            livros::insert($dataForm);
+        }else{
+            livros::insert($dataForm);   
+        }
+        
+        return view('list');
+
     }
 
     /**

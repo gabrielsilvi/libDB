@@ -3,7 +3,7 @@
 @section('content')
 <div class="list">
     <div class="add">
-        <button type="button" class="btn btn-success" ><i class="fas fa-plus"></i>Adicionar Livro</button>
+        <a type="button" class="btn btn-success" href="{{ route('list.create') }}"><i class="fas fa-plus"></i>Adicionar Livro</a>
     </div>
     <table class="table table-striped">
         <thead>
