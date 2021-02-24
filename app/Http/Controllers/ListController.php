@@ -12,9 +12,11 @@ class ListController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(livros $livro)
     {
-        return view('list');
+        $livros =$livro->all();
+
+        return view('list',compact('livros'));
     }
 
     /**
@@ -39,14 +41,14 @@ class ListController extends Controller
 
         // dd($request->file('image'));
         if($request->file('image')->isValid()){
-            $namefile = $request->titulo . '.' . $request->image->extension();
+            $namefile = $request->titulo .'.'. $request->image->extension();
             $request->file('image')->storeAs('capas', $namefile);
             livros::insert($dataForm);
         }else{
             livros::insert($dataForm);   
         }
         
-        return view('list');
+        return redirect()->route('list.index');
 
     }
 
