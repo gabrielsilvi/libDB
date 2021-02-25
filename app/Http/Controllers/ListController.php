@@ -57,7 +57,11 @@ class ListController extends Controller
      */
     public function show($id)
     {
-        //
+        $livro = livros::find($id);
+        if (!$livro)
+            return redirect()->back();
+
+        return view('show', compact('livro'));
     }
 
     /**
@@ -103,6 +107,6 @@ class ListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd($id);
     }
 }
