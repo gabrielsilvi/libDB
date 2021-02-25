@@ -24,8 +24,8 @@
                         <td>{{ $livro->genero }}</td>
                         <td><img src="{{ url("storage/capas/{$livro->image}") }}" alt="{{ $livro->image }}"></td>
                         <td>
-                            <button type="button" class="btn btn-warning"><i class="far fa-edit"></i>Editar</button>
-                            <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i>Excluir</button>
+                            <a type="button" class="btn btn-warning" href="{{route('list.edit', $livro->id)}}"><i class="far fa-edit"></i>Editar</a>
+                            <a type="button" class="btn btn-danger"><i class="fas fa-trash"></i>Excluir</a>
                         </td>
                     </tr>
                 </tbody>

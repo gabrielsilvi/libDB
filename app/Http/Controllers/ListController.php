@@ -14,9 +14,9 @@ class ListController extends Controller
      */
     public function index(livros $livro)
     {
-        $livros =$livro->all();
+        $livros = $livro->all();
 
-        return view('list',compact('livros'));
+        return view('list', compact('livros'));
     }
 
     /**
@@ -40,14 +40,13 @@ class ListController extends Controller
         $dataForm = $request->except('_token');
 
         // dd($request->file('image'));
-        if($request->file('image')->isValid()){
-            $namefile = $request->titulo .'.'. $request->image->extension();
+        if ($request->file('image')->isValid()) {
+            $namefile = $request->titulo . '.' . $request->image->extension();
             $request->file('image')->storeAs('capas', $namefile);
-            $dataForm['image'] = $namefile;   
+            $dataForm['image'] = $namefile;
         }
         livros::insert($dataForm);
         return redirect()->route('list.index');
-
     }
 
     /**
@@ -69,7 +68,10 @@ class ListController extends Controller
      */
     public function edit($id)
     {
-        //
+        $livro = livros::find($id);
+        if (!$livro)
+            return redirect()->back();
+        return view('edit', compact('livro'));
     }
 
     /**
@@ -81,7 +83,16 @@ class ListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $livro = livros::find($id);
+        if (!$livro)
+            return redirect()->back();
+
+        $update = $livro->update($request->all());
+
+        if ($update)
+            return redirect()->route('list.index')->with('success', 'atualizado');
+        else
+            return redirect()->route('list.index')->with('error', 'falha');
     }
 
     /**
