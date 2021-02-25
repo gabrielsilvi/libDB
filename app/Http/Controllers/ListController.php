@@ -107,6 +107,13 @@ class ListController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        $livro = livros::find($id);
+        if (!$livro)
+            return redirect()->back();
+        if($livro->delete())
+            return redirect()->route('list.index')->with('success', 'atualizado');
+        else
+            return redirect()->route('list.index')->with('error', 'falha');
+            
     }
 }
